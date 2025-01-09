@@ -88,7 +88,6 @@ body {
 }
 
 .tiptap {
-
   /* image styling */
   img {
     display: block;
@@ -124,7 +123,7 @@ body {
     }
 
     th {
-      background-color: #c7C7C7;
+      background-color: #c7c7c7;
       font-weight: bold;
       text-align: left;
     }
@@ -132,7 +131,10 @@ body {
     .selectedCell:after {
       background: #888889;
       content: "";
-      left: 0; right: 0; top: 0; bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
       pointer-events: none;
       position: absolute;
       z-index: 2;
@@ -159,47 +161,46 @@ body {
     cursor: col-resize;
   }
   /* Heading styles */
-  h1, 
-  h2, 
-  h3, 
-  h4, 
-  h5, 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
   h6 {
     line-height: 1.1;
     margin-top: 2.5rem;
     text-wrap: pretty;
   }
 
-  h1, 
+  h1,
   h2 {
     margin-top: 3.5rem;
     margin-bottom: 1.5rem;
   }
 
-  h1 { 
-    font-size: 1.4rem; 
+  h1 {
+    font-size: 1.4rem;
   }
 
-  h2 { 
-    font-size: 1.2rem; 
+  h2 {
+    font-size: 1.2rem;
   }
 
-  h3 { 
-    font-size: 1.1rem; 
+  h3 {
+    font-size: 1.1rem;
   }
 
-  h4, 
-  h5, 
-  h6 { 
-    font-size: 1rem; 
+  h4,
+  h5,
+  h6 {
+    font-size: 1rem;
   }
 
   /* List styles */
-  ul, 
+  ul,
   ol {
     padding: 0 1rem;
     margin: 1.25rem 1rem 1.25rem 0.4rem;
-    
   }
   ul li {
     list-style-type: disc;
@@ -255,5 +256,29 @@ body {
     @apply underline;
     cursor: pointer;
   }
-  
+}
+
+/* For mobile */
+
+.floating-threads {
+  display: none;
+}
+
+/* For desktop */
+.anchored-threads {
+  display: block;
+  max-width: 300px;
+  width: 100%;
+  position: absolute;
+  right: 12px;
+}
+
+@media (max-width: 640px) {
+  .floating-threads {
+    display: block;
+  }
+
+  .anchored-threads {
+    display: none;
+  }
 }
