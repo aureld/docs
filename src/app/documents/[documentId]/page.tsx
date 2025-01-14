@@ -1,9 +1,5 @@
 import { preloadQuery } from "convex/nextjs";
 import { auth } from "@clerk/nextjs/server";
-import { Editor } from "./editor";
-import { Navbar } from "./navbar";
-import { Room } from "./room";
-import { Toolbar } from "./toolbar";
 import { Document } from "./document";
 import { Id } from "../../../../convex/_generated/dataModel";
 import { api } from "../../../../convex/_generated/api";

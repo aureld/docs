@@ -1,17 +1,23 @@
+import {
+  LEFT_MARGIN_DEFAULT,
+  PAGE_WIDTH,
+  RIGHT_MARGIN_DEFAULT,
+} from "@/constants/page";
 import { useMutation, useStorage } from "@liveblocks/react";
 import { useRef, useState } from "react";
 import { FaCaretDown } from "react-icons/fa";
 
 const markers = Array.from({ length: 83 }, (_, i) => i);
-const PAGE_WIDTH = 816;
 const MIN_SPACE = 50;
 
 export const Ruler = () => {
-  const leftMargin = useStorage((root) => root.leftMargin) ?? 56;
+  const leftMargin =
+    useStorage((root) => root.leftMargin) ?? LEFT_MARGIN_DEFAULT;
   const setLeftMargin = useMutation(({ storage }, position: number) => {
     storage.set("leftMargin", position);
   }, []);
-  const rightMargin = useStorage((root) => root.rightMargin) ?? 56;
+  const rightMargin =
+    useStorage((root) => root.rightMargin) ?? RIGHT_MARGIN_DEFAULT;
   const setRightMargin = useMutation(({ storage }, position: number) => {
     storage.set("rightMargin", position);
   }, []);
@@ -60,11 +66,11 @@ export const Ruler = () => {
   };
 
   const handleLeftDoubleClick = () => {
-    setLeftMargin(56);
+    setLeftMargin(LEFT_MARGIN_DEFAULT);
   };
 
   const handleRightDoubleClick = () => {
-    setRightMargin(56);
+    setRightMargin(RIGHT_MARGIN_DEFAULT);
   };
 
   return (
@@ -73,7 +79,7 @@ export const Ruler = () => {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      className="w-[816px] mx-auto h-6 border-b border-gray-300 flex items-end relative select-none print:hidden"
+      className={`w-[${PAGE_WIDTH}px] mx-auto h-6 border-b border-gray-300 flex items-end relative select-none print:hidden`}
     >
       <div id="ruler-container" className="w-full h-full relative">
         <Marker
@@ -91,7 +97,7 @@ export const Ruler = () => {
           onDoubleClick={handleRightDoubleClick}
         />
         <div className="absolute inset-x-0 bottom-0 h-full">
-          <div className="relative h-full w-[816px]">
+          <div className={`relative h-full w-[${PAGE_WIDTH}px]`}>
             {markers.map((marker) => {
               const position = (marker * PAGE_WIDTH) / 82;
 
